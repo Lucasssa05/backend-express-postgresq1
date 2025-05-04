@@ -1,4 +1,5 @@
+#!/bin/bash
 
 curl -X POST http://localhost:8080/login \
-     -H "Content-Type: application/json" \
-     -d '{"email": "joao@example.com", "password": "SenhaErrada"}' # Senha incorreta
+-H "Content-Type: application/json" \
+-d '{"email": "john.doe@example.com", "password": "wrongpassword"}'
