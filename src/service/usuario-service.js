@@ -4,7 +4,7 @@ import 'dotenv/config'
 import jwt from 'jsonwebtoken';
 
 
-const register = async (req, res) => {
+const registrar = async (req, res) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     
     const {name, password, email} = req.body;
@@ -56,4 +56,4 @@ const login = async (req, res) => {
 
 }
 
-export default {register, login}
+export default {registrar, login}
