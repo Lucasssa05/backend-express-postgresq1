@@ -25,4 +25,4 @@ const User = sequelize.define('usuario', {
   timestamps: false   // se quiser evitar createdAt e updatedAt
 });
 
-export default usuario;
+export default user;
