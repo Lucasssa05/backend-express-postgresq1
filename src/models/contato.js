@@ -1,33 +1,28 @@
 // nome / telefone/ email / endereço 
 import { DataTypes } from 'sequelize';
-import sequelize from '../banco/banco.js'; // caminho para sua instância do Sequelize
+import sequelize from '../banco/banco.js';
 
 const contato = sequelize.define('contato', {
   name: {
     type: DataTypes.STRING,
     allowNull: false
+  
   },
   telefone: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   email: {
     type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      isEmail: true
-    },
-    set(value) {
-      this.setDataValue('email', value.trim().toLowerCase());
-    }
+    allowNull: true
   },
-    endereco: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }
+  userId:{
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }
 }, {
-  tableName: 'contato', // Nome da tabela no banco
-  timestamps: false   // se quiser evitar createdAt e updatedAt
+  tableName: 'contatos',
+  timestamps: false
 });
 
 export default contato;

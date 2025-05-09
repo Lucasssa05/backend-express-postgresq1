@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../banco/banco.js'; // caminho para sua instância do Sequelize
+import sequelize from '../banco/banco.js';
 
-const User = sequelize.define('usuario', {
+const user = sequelize.define('usuario', {
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -21,8 +21,8 @@ const User = sequelize.define('usuario', {
     }
   }
 }, {
-  tableName: 'usuario', // Nome da tabela no banco
-  timestamps: false   // se quiser evitar createdAt e updatedAt
+  tableName: 'usuario', 
+  timestamps: false
 });
 
-export default User;
+export default user;
