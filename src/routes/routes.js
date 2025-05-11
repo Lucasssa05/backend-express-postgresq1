@@ -10,5 +10,7 @@ router.post('/login', userControle.loginBanco);
 router.get('/protected', verificadorToken, protectedController.defesa);
 router.post('/contato', verificadorToken, contatoController.criarContato);
 router.get('/contato', verificadorToken, contatoController.listarContatos);
+router.put('/contato/:id', verificadorToken, contatoController.atualizarContato);
+router.delete('/contato/:id', verificadorToken, contatoController.deletarContato);
 export default router;
 

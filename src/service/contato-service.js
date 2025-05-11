@@ -29,18 +29,7 @@ const listarContatosbyuserid = async (req, res) => {
         return res.status(500).json({ message: "Erro ao listar contatos: " + error });
     }
 }
-const listarContatoPorId = async (req, res) => {
-    const { id } = req.params;
-    try {
-        const contato = await Contato.findByPk(id);
-        if (!contato) {
-            return res.status(404).json({ message: "Contato não encontrado!" });
-        }
-        return res.status(200).json(contato);
-    } catch (error) {
-        return res.status(500).json({ message: "Erro ao listar contato: " + error });
-    }
-}
+
 const atualizarContato = async (req, res) => {
     const { id } = req.params;
     const { name, email, telefone, endereco } = req.body;
@@ -76,6 +65,7 @@ const deletarContato = async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: "Erro ao deletar contato: " + error });
     }
+    
 }
-export default { criarContato, listarContatosbyuserid, listarContatoPorId, atualizarContato, deletarContato }
+export default { criarContato, listarContatosbyuserid, atualizarContato, deletarContato }
 

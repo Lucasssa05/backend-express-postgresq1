@@ -22,8 +22,30 @@ const listarContatos = async (id, res) => {
         return res.status(500).json({ message: "Erro ao listar contatos: " + error });
     }
 }
+const atualizarContato = async (req, res) => {
+    if (!req.params.id) {
+        return res.status(400).json({ message: "ID do contato é obrigatório!" });
+    }
+    try {
+        await contatoService.atualizarContato(req, res);
+    } catch (error) {
+        return res.status(500).json({ message: "Erro ao atualizar contato: " + error });
+    }
+}
+const deletarContato = async (req, res) => {
+    if (!req.params.id) {
+        return res.status(400).json({ message: "ID do contato é obrigatório!" });
+    }
+    try {
+        await contatoService.deletarContato(req, res);
+    } catch (error) {
+        return res.status(500).json({ message: "Erro ao deletar contato: " + error });
+    }
+}
 
 export default {
     criarContato,
-    listarContatos 
+    listarContatos,
+    atualizarContato,
+    deletarContato 
 }
