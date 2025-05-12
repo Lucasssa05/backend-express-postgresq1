@@ -16,7 +16,7 @@ const criarContato = async (req, res) => {
         return res.status(500).json({ message: "Erro ao cadastrar contato: " + error });
     }
 }
-// mudar no futuro 
+
 const listarContatosbyuserid = async (req, res) => {
     const userId = req.userId;
     try {
@@ -32,6 +32,7 @@ const listarContatosbyuserid = async (req, res) => {
 
 const atualizarContato = async (req, res) => {
     const { id } = req.params;
+    const userId = req.userId;
     const { name, email, telefone, endereco } = req.body;
 
     try {
@@ -54,6 +55,7 @@ const atualizarContato = async (req, res) => {
 }
 const deletarContato = async (req, res) => {
     const { id } = req.params;
+    const userId = req.userId;
     try {
         const contato = await Contato.findByPk(id);
         if (!contato) {
@@ -67,5 +69,28 @@ const deletarContato = async (req, res) => {
     }
     
 }
-export default { criarContato, listarContatosbyuserid, atualizarContato, deletarContato }
+const atualizarContatoPatch = async (req, res) => {
+    const { id } = req.params;
+    const userId = req.userId;
+    const { name, email, telefone, endereco } = req.body;
+
+    try {
+        const contato = await Contato.findByPk(id);
+        if (!contato) {
+            return res.status(404).json({ message: "Contato não encontrado!" });
+        }
+
+        await contato.update({
+            name,
+            email,
+            telefone,
+            endereco
+        });
+
+        return res.status(200).json({ message: "Contato atualizado com sucesso!", contato });
+    } catch (error) {
+        return res.status(500).json({ message: "Erro ao atualizar contato: " + error });
+    }
+}
+export default { criarContato, listarContatosbyuserid, atualizarContato, deletarContato, atualizarContatoPatch }
 

@@ -4,7 +4,7 @@ import router from './src/routes/routes.js'
 import sequelize from './src/banco/banco.js';
 import User from './src/models/usuario.js';
 import Contato from './src/models/contato.js';
-import relacionamentos from './src/models/relacionamentos.js';
+import RelationTables from './src/models/relacionamentos.js';
 
 
 (async () => {

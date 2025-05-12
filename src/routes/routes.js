@@ -12,5 +12,6 @@ router.post('/contato', verificadorToken, contatoController.criarContato);
 router.get('/contato', verificadorToken, contatoController.listarContatos);
 router.put('/contato/:id', verificadorToken, contatoController.atualizarContato);
 router.delete('/contato/:id', verificadorToken, contatoController.deletarContato);
+router.patch('/contato/:id', verificadorToken, contatoController.atualizarContatoPatch);
 export default router;
 
