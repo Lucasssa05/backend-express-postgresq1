@@ -1,28 +1,36 @@
-// nome / telefone/ email / endereço 
-import { DataTypes } from 'sequelize';
-import sequelize from '../banco/banco.js';
+// nome / telefone/ email / endereço
+import { DataTypes } from "sequelize";
+import sequelize from "../banco/banco.js";
+import e from "express";
 
-const contato = sequelize.define('contato', {
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  
+const contato = sequelize.define(
+  "contato",
+  {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    telefone: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    endereco: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
-  telefone: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  userId:{
-    type: DataTypes.INTEGER,
-    allowNull: false
+  {
+    tableName: "contatos",
+    timestamps: false,
   }
-}, {
-  tableName: 'contatos',
-  timestamps: false
-});
+);
 
 export default contato;
