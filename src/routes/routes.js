@@ -8,7 +8,7 @@ const router = express.Router();
 router.post("/register", userControle.salvarBanco);
 router.post("/login", userControle.loginBanco);
 router.get("/protected", verificadorToken, protectedController.defesa);
-router.post("/contato/:id", verificadorToken, contatoController.criarContato);
+router.post("/contato", verificadorToken, contatoController.criarContato);
 router.get("/contato", verificadorToken, contatoController.listarContatos);
 router.put(
   "/contato/:id",
